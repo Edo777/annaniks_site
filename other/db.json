@@ -1,0 +1,39 @@
+{
+    "companyName" : "",
+    "slogin" : "",
+    "description" : "",
+    "serviceDiscription" : "",
+    "serviceTitle" : "",
+    "services" : [{
+        "label" : "",
+        "picture" : "" 
+    }],
+    "portfolio" : [{
+        "name" : "",
+        "href" : "",
+        "cover" : "",
+        "picture" : "",
+        "description" : "",
+        "tools" : [""],
+        "galery" : [""]
+    }],
+    "advantage" : [{
+        "picture" : "",
+        "title" : "",
+        "description" : ""
+    }],
+    "staff" : [{
+        "picture" : "",
+        "name" : "",
+        "linkedln" : "",
+        "email" : ""
+    }],
+    "contacts" : {
+        "name" : "",
+        "address" : "",
+        "contactEmail" : "",
+        "phone" : "",
+        "fb" : ""
+    }
+
+}

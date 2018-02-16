@@ -1,0 +1,14 @@
+{
+    "e_mail_contact" : "",
+    "e_mail_hr" : "",
+    "e_mail_info" : "",
+    "banners"  : [
+        {
+            "image" : "",
+            "titile" : "",
+            "description" : "",
+            "isactive" : false,
+            "language" : ""
+        }
+    ]
+}
