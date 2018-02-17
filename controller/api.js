@@ -1,13 +1,15 @@
+const EmailRouter = require('./email');
+const BannerRouter = require('./banner');
 const body_parser = require("body-parser");
-const AnnaniksRouter = require("./annaniks");
 
 class API{
-    initializeApp(app){
+    initApp(app){
         app.use(body_parser.json());
         app.use(body_parser.urlencoded({
             extended : true
         }));
-        app.use('/', AnnaniksRouter);
+        app.use('/email', EmailRouter);
+        app.use('/banner', BannerRouter);
     }
 }
 
