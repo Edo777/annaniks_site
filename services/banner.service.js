@@ -1,4 +1,4 @@
-var db = require('../database/banner.db');
+var db = require('../database/db');
 require("../models/banner.model");
 
 class BannerService{

@@ -1,4 +1,4 @@
-const db = require("../database/email.db");
+const db = require("../database/db");
 require('../models/email.model');
 
 class MailService{
@@ -19,12 +19,12 @@ class MailService{
 
     getEmails(){
         return new Promise((resolve, reject) => {
-            this.Mails.find({}, (err, result) => {
-                if(err) {
-                    return reject(err);
-                }else{
-                    return resolve(result[0]);
-                }
+            this.Mails.find({})
+            .then((result) => {
+                resolve(result[0])
+            })
+            .catch((err) => {
+                reject(err)
             })
         });
     }
@@ -40,12 +40,12 @@ class MailService{
             updateObj.email_hr = editedEmails.email_hr
         }
         return new Promise((resolve, reject) => {
-            this.Mails.findOneAndUpdate({}, updateObj, (err, doc, res) => {
-                if(err){
-                    return reject(err);
-                }else{
-                    return resolve();
-                }
+            this.Mails.update({_id : "5a8ac5d50790431814be816d"}, updateObj)
+            .then((result) => {
+                resolve(result);
+            })
+            .catch((err) => {
+                reject(err);
             })
         })
         
