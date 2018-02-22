@@ -2,10 +2,12 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 var ServicesSchema = new Schema({
-    serviceInfo:[{
-        description: String,
-        language: String
-    }],
+    serviceInfo:[
+        {
+            description: String,
+            language: String
+        }
+    ],
     serviceItem:[
         {
             image: String,

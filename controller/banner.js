@@ -1,7 +1,7 @@
 const BannerRouter = require("express").Router();
 const BannerService = require('../services/banner.service');
 
-BannerRouter.get('/', (req, res) => {
+BannerRouter.get('/:lng', (req, res) => {
     BannerService.get("arm")
         .then((result) => {
             res.send(result);
@@ -26,6 +26,17 @@ BannerRouter.put('/', (req, res) => {
         })
         .catch((err) => {
             res.send(err.message);
+        })
+})
+BannerRouter.delete('/', (req, res) => {
+    let id = req.body.id;
+    console.log(id);
+    BannerService.delete(id)
+        .then((result) => {
+            res.send(result);
+        })
+        .catch((error) => {
+            res.send(error);
         })
 })
 

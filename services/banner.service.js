@@ -5,39 +5,53 @@ class BannerService{
     constructor(){
         this.Banners = db.model("banners");
         
-        this.Banners.find({}, (err, res) => {
-            if(err) throw err;
-
-            if(res.length == 0){
-                this.Banners.create({
-                    image : "Other image",
-                    titile : "Other title",
-                    description : "some description",
-                    isactive : true,
-                    language : "arm"
-                })
-            }
-        })
+        this.Banners.find({})
+            .then((result) => {
+                if(!result.length){
+                    this.Banners.create({
+                        image : "Other image",
+                        titile : "Other title",
+                        description : "some description",
+                        isactive : true,
+                        language : "arm"
+                    })
+                }
+            })
+            .catch((error)=>{
+                console.log(error)
+            })
     }
     get(lng){
         return new Promise((resolve, reject) => {
             this.Banners.findOne({ language:lng, isactive:true })
                 .then((result) => {                    
-                    resolve(result);
+                    resolve({
+                        status:"ok",
+                        result
+                    });
                 })
-                .catch((err) => {
-                    reject(err)
+                .catch((error) => {
+                    reject({
+                        status:"field",
+                        error
+                    })
                 })
         })
     }
-    getAll(){
+    getAll(lng){
         return new Promise((resolve, reject) => {
             this.Banners.find({ language:lng })
                 .then((result) => {                    
-                    resolve(result);
+                    resolve({
+                        status:"ok",
+                        result
+                    });
                 })
-                .catch((err) => {
-                    reject(err)
+                .catch((error) => {
+                    reject({
+                        status:"field",
+                        error
+                    })
                 })
         })
     }
@@ -50,33 +64,43 @@ class BannerService{
                     result
                 })
             })
-            .catch((err) =>{
+            .catch((error) =>{
                 reject({
                     status:"field",
-                    err
+                    error
                 })
             })
         })
     }
-    add(createDoc){
+    add(createBanner){
         return new Promise((resolve, reject) => {
-            this.Banners.create(createDoc)
+            this.Banners.create(createBanner)
             .then((result) => {
                 resolve({
                     status:"ok",
                     result
                 })
             })
-            .catch((err) =>{
+            .catch((error) =>{
                 reject({
                     status:"field",
-                    err
+                    error
                 })
             })
         })
     }
-    delete(){
-
+    delete(id){
+        return new Promise((resolve, reject) => {
+            this.Banners.deleteOne({_id : id})
+                .then((result) => {
+                    resolve({
+                        status : "ok"
+                    })
+                })
+                .catch((error) => {
+                        status : "field"
+                })
+            })
     }
 }
 
