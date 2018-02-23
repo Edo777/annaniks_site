@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const BannerSchema = new Schema({
     image : String,
-    titile : String,
+    title : String,
     description : String,
     isactive : Boolean,
     language : String
